@@ -1,0 +1,55 @@
+{
+    "name": "DIS_Epistemic_Aleatoric",
+    "seed":8,
+    "scalers":{
+        "MLP":"\path\to\MLP_Scalers",
+        "MNF":"\path\to\MNF_Scalers"
+    },
+    "model": {
+       "blocks": [64,128,512,1024,512,128,64,3],
+       "dropout_setval": 0.0
+    },
+    "dataset": {
+        "root_dir" : "\root_dir",
+        "path_to_csv": "\data\dir\all-h1-rapgap-eventselection.csv",
+        "idx_path": "\path\to\indices_train_test_val",
+        "train_filename": null,
+        "val_filename": null,
+        "test_filename": null
+    },
+    "lr_scheduler": {
+        "step_size": 50,
+        "gamma": 0.1
+    },
+    "optimizer": {
+        "lr": 5e-4,
+        "huber_delta":1.0,
+        "huber_scale":1.0,
+    	"log_sum_scale":1.0,
+    	"phys_scale":1.0,
+    	"KL_scale":0.01
+    },
+    "num_epochs":100,
+    "dataloader": {
+        "split":[0.7,0.15,0.15],
+        "train": {
+            "batch_size": 1024
+    	},
+        "val": {
+            "batch_size": 1024
+        },
+        "test": {
+            "batch_size": 100,
+        }
+    },
+    "output": {
+	"dir": "\path\to\Trained_Models"
+    },
+    "Inference": {
+        "MNF_model":"\path\to\trained\ELUQant",
+        "DNN_model": "\path\to\trained\mlp",
+        "out_dir": "\path\to\inference\out_dir",
+        "out_file": "Inference.csv"
+    }
+}
+}
