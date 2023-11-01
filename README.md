@@ -4,3 +4,4 @@
 TODO: 
 1. Include full uncertainty analysis pipeline in notebook.
 2. Include full readme on how to run code.
+3. Remove duplication of MNFLinear code.
